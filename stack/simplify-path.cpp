@@ -8,7 +8,10 @@ public:
             if ((path[i] == '/') || (i == path.size() - 1)) {
                 if ((i == path.size() - 1) && (path[i] != '/')) currentDir += path[i];
                 if (currentDir != "") {
-                    if (currentDir == ".") continue;
+                    if (currentDir == ".") {
+                        currentDir = "";
+                        continue;
+                    }                            
                     if (currentDir == "..") { if (!pathStack.empty()) pathStack.pop(); }
                     if (currentDir != "." && currentDir != "..") pathStack.push(currentDir);
                     currentDir = "";
