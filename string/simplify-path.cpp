@@ -7,18 +7,18 @@ public:
         for (int i = 1; i < path.size(); i++) {
             if ((path[i] == '/') || (i == path.size() - 1)) {
                 if ((i == path.size() - 1) && (path[i] != '/')) currentDir += path[i];
-                if (currentDir == ".") continue;
-                if (currentDir == "..") { if (!pathStack.empty()) pathStack.pop(); }
-                if (currentDir != "." && currentDir != "..") pathStack.push(currentDir);
-                currentDir = "";
+                if (currentDir != "") {
+                    if (currentDir == ".") continue;
+                    if (currentDir == "..") { if (!pathStack.empty()) pathStack.pop(); }
+                    if (currentDir != "." && currentDir != "..") pathStack.push(currentDir);
+                    currentDir = "";
+                }
             }
             else currentDir += path[i];
         }
         
         while (!pathStack.empty()) {
-            if (pathStack.top() != "") {
-                simplifiedCanonicalPath = "/" + pathStack.top() + simplifiedCanonicalPath;
-            }
+            simplifiedCanonicalPath = "/" + pathStack.top() + simplifiedCanonicalPath;
             pathStack.pop();
         }
         if (simplifiedCanonicalPath == "") simplifiedCanonicalPath = "/";
