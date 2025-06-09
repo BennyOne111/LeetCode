@@ -6,17 +6,22 @@ public:
             if (s[i] == '(' || s[i] == '{' || s[i] == '[') {
                 stk.push(s[i]);
             }
-            if (s[i] == ')') {
-                if (stk.top() == '(') stk.pop();
-                else return false;
-            }
-            if (s[i] == '}') {
-                if (stk.top() == '{') stk.pop();
-                else return false;
-            }
-            if (s[i] == ']') {
-                if (stk.top() == '[') stk.pop();
-                else return false;
+            else {
+                if (stk.empty()) return false;
+                else {
+                    if (s[i] == ')') {
+                        if (stk.top() == '(') stk.pop();
+                        else return false;
+                    }
+                    if (s[i] == '}') {
+                        if (stk.top() == '{') stk.pop();
+                        else return false;
+                    }
+                    if (s[i] == ']') {
+                        if (stk.top() == '[') stk.pop();
+                        else return false;
+                    }
+                }
             }
         }
         
