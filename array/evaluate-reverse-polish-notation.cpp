@@ -2,7 +2,7 @@ class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
         stack<int> stk;
-        for (string s : tokens) {
+        for (const string& s : tokens) {
             if (s == "+") {
                 auto [operand1, operand2] = getOperands(stk);
                 stk.push(operand1 + operand2);
