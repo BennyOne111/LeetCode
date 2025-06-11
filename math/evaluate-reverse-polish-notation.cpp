@@ -7,21 +7,19 @@ public:
                 auto [operand1, operand2] = getOperands(stk);
                 stk.push(operand1 + operand2);
             }
-            if (s == "-") {
+            else if (s == "-") {
                 auto [operand1, operand2] = getOperands(stk);
                 stk.push(operand1 - operand2);
             }
-            if (s == "*") {
+            else if (s == "*") {
                 auto [operand1, operand2] = getOperands(stk);
                 stk.push(operand1 * operand2);
             }
-            if (s == "/") {
+            else if (s == "/") {
                 auto [operand1, operand2] = getOperands(stk);
                 stk.push(int(operand1 / operand2));
             }
-            if (s != "+" && s != "-" && s != "*" && s != "/") {
-                stk.push(stoi(s));
-            }
+            else stk.push(stoi(s));
         }
         
         return stk.top();
