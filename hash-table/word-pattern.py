@@ -8,7 +8,7 @@ class Solution(object):
         words = s.split()
 
         if len(pattern) != len(words):
-            return false
+            return False
 
         char_to_word = {}
         word_to_char = {}
