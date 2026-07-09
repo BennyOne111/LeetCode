@@ -1,0 +1,15 @@
+class Solution:
+    def maxSubarrayLength(self, nums: List[int], k: int) -> int:
+        count = defaultdict(int)
+        max_len = 0
+        left = 0
+
+        for right in range(len(nums)):
+            count[nums[right]] += 1
+            while count[nums[right]] > k:
+                left += 1
+                count[nums[left]] -= 1
+            max_len = max(max_len, right - left + 1)
+
+        return max_len
+        
